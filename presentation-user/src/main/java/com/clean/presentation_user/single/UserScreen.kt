@@ -8,13 +8,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.clean.presentation_common.PresentedScreen
+import com.clean.presentation_navigation.UserInput
 
 @Composable
 fun UserScreen(
     viewModel: UserViewModel,
-    userId: Long
+    userInput: UserInput
 ) {
-    viewModel.loadUser(userId)
+    viewModel.loadUser(userInput.userId)
     viewModel.userFlow.collectAsState().value.let { result ->
         PresentedScreen(result) { userModel ->
             User(userModel)

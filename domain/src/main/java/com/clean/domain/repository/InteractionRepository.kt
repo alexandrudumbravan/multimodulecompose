@@ -7,5 +7,5 @@ interface InteractionRepository {
 
     fun getInteraction(): Flow<Interaction>
 
-    suspend fun saveInteraction(interaction: Interaction)
+    fun saveInteraction(interaction: Interaction) : Flow<Interaction>
 }

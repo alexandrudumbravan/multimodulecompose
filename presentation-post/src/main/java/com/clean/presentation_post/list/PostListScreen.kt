@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.clean.presentation_common.PresentedScreen
 import com.clean.presentation_navigation.NavRoutes
+import com.clean.presentation_navigation.PostInput
+import com.clean.presentation_navigation.UserInput
 
 @Composable
 fun PostListScreen(
@@ -26,10 +28,10 @@ fun PostListScreen(
         PresentedScreen(result) { postListModel ->
             PostList(postListModel, { postListItem ->
                 viewModel.updateInteraction(postListModel.interaction)
-                navController.navigate(NavRoutes.Post.routeForId(postListItem.id))
+                navController.navigate(NavRoutes.Post.routeForPost(PostInput(postListItem.id)))
             }) { postListItem ->
                 viewModel.updateInteraction(postListModel.interaction)
-                navController.navigate(NavRoutes.User.routeForId(postListItem.id))
+                navController.navigate(NavRoutes.User.routeForUser(UserInput(postListItem.id)))
             }
         }
     }

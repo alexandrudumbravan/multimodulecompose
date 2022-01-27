@@ -8,13 +8,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.clean.presentation_common.PresentedScreen
+import com.clean.presentation_navigation.PostInput
 
 @Composable
 fun PostScreen(
     viewModel: PostViewModel,
-    postId: Long
+    postInput: PostInput
 ) {
-    viewModel.loadPost(postId)
+    viewModel.loadPost(postInput.postId)
     viewModel.postFlow.collectAsState().value.let { result ->
         PresentedScreen(result) { postModel ->
             Post(postModel)

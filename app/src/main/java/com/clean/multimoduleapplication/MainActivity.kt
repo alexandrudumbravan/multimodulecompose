@@ -43,24 +43,20 @@ fun App(navController: NavHostController) {
         }
         composable(
             route = NavRoutes.Post.route,
-            arguments = listOf(navArgument(NavRoutes.Post.argumentName) {
-                type = NavType.LongType
-            })
+            arguments = NavRoutes.Post.arguments
         ) {
             PostScreen(
                 hiltViewModel(),
-                it.arguments?.getLong(NavRoutes.Post.argumentName) ?: 0
+                NavRoutes.Post.fromEntry(it)
             )
         }
         composable(
             route = NavRoutes.User.route,
-            arguments = listOf(navArgument(NavRoutes.User.argumentName) {
-                type = NavType.LongType
-            })
+            arguments = NavRoutes.User.arguments
         ) {
             UserScreen(
                 hiltViewModel(),
-                it.arguments?.getLong(NavRoutes.User.argumentName) ?: 0
+                NavRoutes.User.fromEntry(it)
             )
         }
     }

@@ -3,7 +3,7 @@ package com.clean.domain.usecase
 import com.clean.domain.entities.Interaction
 import com.clean.domain.repository.InteractionRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class UpdateInteractionUseCase @Inject constructor(
@@ -12,10 +12,10 @@ class UpdateInteractionUseCase @Inject constructor(
 ) : UseCase<UpdateInteractionUseCase.Request, UpdateInteractionUseCase.Response>(configuration) {
 
     override fun executeInternal(request: Request): Flow<Response> {
-        return flow {
-            interactionRepository.saveInteraction(request.interaction)
-            emit(Response)
-        }
+        return interactionRepository.saveInteraction(request.interaction)
+            .map {
+                Response
+            }
     }
 
     data class Request(val interaction: Interaction) : UseCase.Request
