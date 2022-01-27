@@ -1,0 +1,18 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "MultiModuleApplication"
+include ':app'
+include ':domain'
+include ':repository'
+include ':network'
+include ':persistence'
+include ':presentation-navigation'
+include ':presentation-post'
+include ':presentation-common'
+include ':presentation-user'
